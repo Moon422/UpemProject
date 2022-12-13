@@ -1,5 +1,12 @@
 project=UpemProject
+cc=dotnet
+
+run:
+	$(cc) run --project $(project)
+
+watch:
+	$(cc) watch run --project $(project)
 
 migration:
-	dotnet ef migrations add $(name) -p $(project)
-	dotnet ef database update -p $(project)
+	$(cc) ef migrations add $(name) -p $(project)
+	$(cc) ef database update -p $(project)
