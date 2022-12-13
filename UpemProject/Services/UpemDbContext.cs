@@ -23,6 +23,19 @@ public class UpemDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<School>(
+            entity =>
+            {
+                entity
+                    .Property(s => s.CreatedAt)
+                    .HasDefaultValueSql("now()");
+
+                entity
+                    .Property(s => s.LastUpdated)
+                    .HasDefaultValue("now()");
+            }
+        );
+
         base.OnModelCreating(modelBuilder);
     }
 }

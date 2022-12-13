@@ -16,5 +16,8 @@ public class School
     [Required]
     public string Code { get; set; }
 
+    public DateTime CreatedAt { get; set; }
+    public DateTime LastUpdated { get; set; }
+
     public List<Department> Departments { get; set; }
 }
