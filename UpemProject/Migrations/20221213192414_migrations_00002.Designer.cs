@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UpemProject.Services;
 
@@ -10,9 +11,10 @@ using UpemProject.Services;
 namespace UpemProject.Migrations
 {
     [DbContext(typeof(UpemDbContext))]
-    partial class UpemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221213192414_migrations_00002")]
+    partial class migrations_00002
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
