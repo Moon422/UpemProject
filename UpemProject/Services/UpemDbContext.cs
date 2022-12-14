@@ -12,6 +12,7 @@ public class UpemDbContext : DbContext
     public DbSet<Department> Departments { get; set; }
     public DbSet<UpemProgram> Programs { get; set; }
     public DbSet<Course> Courses { get; set; }
+    public DbSet<Faculty> Faculties { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,6 +35,15 @@ public class UpemDbContext : DbContext
                 entity
                     .HasOne(c => c.CoOfferedWith)
                     .WithMany(c => c.CoOfferedCourses);
+            }
+        );
+
+        modelBuilder.Entity<User>(
+            entity =>
+            {
+                entity
+                    .HasDiscriminator<UserType>("UserType")
+                    .HasValue<Faculty>(UserType.FACULTY);
             }
         );
 
