@@ -28,6 +28,15 @@ public class UpemDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Course>(
+            entity =>
+            {
+                entity
+                    .HasOne(c => c.CoOfferedWith)
+                    .WithMany(c => c.CoOfferedCourses);
+            }
+        );
+
         base.OnModelCreating(modelBuilder);
     }
 }

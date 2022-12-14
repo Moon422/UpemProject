@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,4 +22,9 @@ public class Course
     [Required]
     public Guid ProgramId { get; set; }
     public Program Program { get; set; }
+
+    public Guid? CoOfferedWithId { get; set; }
+    public Course CoOfferedWith { get; set; }
+
+    public List<Course> CoOfferedCourses { get; set; }
 }
