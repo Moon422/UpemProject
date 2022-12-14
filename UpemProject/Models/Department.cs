@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,4 +22,6 @@ public class Department
     [Required]
     public Guid SchoolId { get; set; }
     public School School { get; set; }
+
+    public List<Program> Programs { get; set; }
 }

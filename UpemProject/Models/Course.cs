@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UpemProject.Models;
 
-[Table("Programs")]
-public class Program
+[Table("Courses")]
+public class Course
 {
     public Guid Id { get; set; }
 
@@ -17,8 +16,9 @@ public class Program
     public string Code { get; set; }
 
     [Required]
-    public Guid DepartmentId { get; set; }
-    public Department Department { get; set; }
+    public byte CreditHours { get; set; }
 
-    public List<Course> Courses { get; set; }
+    [Required]
+    public Guid ProgramId { get; set; }
+    public Program Program { get; set; }
 }

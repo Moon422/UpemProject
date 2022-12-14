@@ -2,12 +2,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using UpemProject.Models;
 
+using UpemProgram = UpemProject.Models.Program;
+
 namespace UpemProject.Services;
 
 public class UpemDbContext : DbContext
 {
     public DbSet<School> Schools { get; set; }
     public DbSet<Department> Departments { get; set; }
+    public DbSet<UpemProgram> Programs { get; set; }
+    public DbSet<Course> Courses { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -23,19 +28,6 @@ public class UpemDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // modelBuilder.Entity<School>(
-        //     entity =>
-        //     {
-        //         entity
-        //             .Property(s => s.CreatedAt)
-        //             .HasDefaultValueSql("now()");
-
-        //         entity
-        //             .Property(s => s.LastUpdated)
-        //             .HasDefaultValue("now()");
-        //     }
-        // );
-
         base.OnModelCreating(modelBuilder);
     }
 }
