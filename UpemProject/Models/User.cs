@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UpemProject.Models.Enums;
 
 namespace UpemProject.Models;
 
@@ -27,5 +29,5 @@ public abstract class User
 
 public class Faculty : User
 {
-
+    public List<Section> Sections { get; set; }
 }

@@ -29,4 +29,6 @@ public class Course
     public Course CoOfferedWith { get; set; }
 
     public List<Course> CoOfferedCourses { get; set; }
+
+    public List<Section> Sections { get; set; }
 }

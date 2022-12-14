@@ -1,7 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using UpemProject.Models;
-
+using UpemProject.Models.Enums;
 using UpemProgram = UpemProject.Models.Program;
 
 namespace UpemProject.Services;
