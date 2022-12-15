@@ -10,3 +10,7 @@ watch:
 migration:
 	$(cc) ef migrations add $(name) -p $(project)
 	$(cc) ef database update -p $(project)
+
+new:
+	$(cc) new $(template) -o $(name)
+	$(cc) sln add $(name)
