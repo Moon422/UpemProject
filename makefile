@@ -1,4 +1,4 @@
-project=UpemProject
+project=Backend
 cc=dotnet
 
 run:
