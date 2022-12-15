@@ -14,17 +14,9 @@ public class UpemDbContext : DbContext
     public DbSet<Course> Courses { get; set; }
     public DbSet<Faculty> Faculties { get; set; }
 
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public UpemDbContext(DbContextOptions<UpemDbContext> options) : base(options)
     {
-        optionsBuilder.UseMySql(
-            "server=localhost;user=spms_user;password=hola;database=upem_db",
-            new MySqlServerVersion(
-                new Version(8, 0, 31)
-            )
-        );
 
-        base.OnConfiguring(optionsBuilder);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
