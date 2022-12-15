@@ -1,3 +1,5 @@
+using System;
+
 namespace Backend.Dtos;
 
 public abstract class SchoolDto
