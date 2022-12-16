@@ -1,10 +1,24 @@
+using System;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UpemProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<UpemDbContext>(
+    options =>
+    {
+        options.UseMySql(
+            builder.Configuration["ConnectionString"],
+            new MySqlServerVersion(
+                new Version(8, 0, 31)
+            )
+        );
+    }
+);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
