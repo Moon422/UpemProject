@@ -7,7 +7,7 @@ run:
 watch:
 	$(cc) watch run --project $(project)
 
-migration:
+migrate:
 	$(cc) ef migrations add $(name) -p $(project)
 	$(cc) ef database update -p $(project)
 
