@@ -17,3 +17,6 @@ new:
 
 new-sln:
 	$(cc) new sln
+
+restore:
+	$(cc) restore -v d --disable-parallel
