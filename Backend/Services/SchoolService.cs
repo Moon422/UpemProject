@@ -17,7 +17,7 @@ public class SchoolService
 
     public IEnumerable<ShowSchoolDto> GetAllSchools()
     {
-        return this._dbContext.Schools.Select(s => s.ToDto());
+        return this._dbContext.Schools.Select(s => s.ToShowDto());
     }
 
     public async Task<bool> CreateSchool(CreateSchoolDto dto)
