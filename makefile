@@ -14,3 +14,6 @@ migration:
 new:
 	$(cc) new $(template) -o $(name)
 	$(cc) sln add $(name)
+
+new-sln:
+	$(cc) new sln
