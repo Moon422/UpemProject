@@ -12,7 +12,7 @@ builder.Services.AddDbContext<UpemDbContext>(
     options =>
     {
         options.UseMySql(
-            builder.Configuration["ConnectionString"],
+            builder.Configuration["ConnectionStrings"],
             new MySqlServerVersion(
                 new Version(8, 0, 31)
             )
@@ -21,7 +21,6 @@ builder.Services.AddDbContext<UpemDbContext>(
 );
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
