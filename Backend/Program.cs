@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UpemProject.Services;
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<UpemDbContext>(
     options =>
     {
         options.UseMySql(
-            builder.Configuration["ConnectionStrings"],
+            builder.Configuration.GetConnectionString("MySql"),
             new MySqlServerVersion(
                 new Version(8, 0, 31)
             )
