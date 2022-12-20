@@ -15,4 +15,7 @@ public class Classroom
 
     [Required]
     public int Capacity { get; set; }
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
 }

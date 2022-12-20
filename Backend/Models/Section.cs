@@ -31,6 +31,9 @@ public class Section
     [Required]
     public int Year { get; set; }
 
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
+
     [Required]
     public Guid CourseId { get; set; }
     public Course Course { get; set; }

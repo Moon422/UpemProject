@@ -21,6 +21,9 @@ public class Course
     [Required]
     public byte CreditHours { get; set; }
 
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
+
     [Required]
     public Guid ProgramId { get; set; }
     public Program Program { get; set; }
