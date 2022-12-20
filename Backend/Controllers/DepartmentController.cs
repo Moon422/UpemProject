@@ -50,4 +50,18 @@ public class DepartmentController : ControllerBase
             return BadRequest();
         }
     }
+
+    [HttpDelete("delete/{departmentId}")]
+    public async Task<IActionResult> DeleteDepartmentById(Guid departmentId)
+    {
+        try
+        {
+            await this.departmentService.DeleteDepartmentById(departmentId);
+            return NoContent();
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 }

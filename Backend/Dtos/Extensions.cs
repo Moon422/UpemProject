@@ -33,7 +33,6 @@ public static class DtoExtensions
         {
             Id = department.Id,
             Name = department.Name,
-            Code = department.Code,
             SchoolId = department.SchoolId,
             CreatedAt = department.CreatedAt,
             LastUpdated = department.LastUpdated
@@ -46,7 +45,6 @@ public static class DtoExtensions
         {
             Id = Guid.NewGuid(),
             Name = dto.Name,
-            Code = dto.Code,
             SchoolId = dto.SchoolId
         };
     }
