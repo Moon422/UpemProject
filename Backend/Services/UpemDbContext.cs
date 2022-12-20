@@ -16,7 +16,12 @@ public class UpemDbContext : DbContext
 
     public UpemDbContext(DbContextOptions<UpemDbContext> options) : base(options)
     {
+        this.SaveChangesFailed += OnSaveChangesFailed;
+    }
 
+    private void OnSaveChangesFailed(object sender, SaveChangesFailedEventArgs e)
+    {
+        throw new InvalidOperationException("Failed to save changes to database");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

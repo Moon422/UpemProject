@@ -18,58 +18,45 @@ public interface ISchoolService
 
 public class SchoolService : ISchoolService
 {
-    private UpemDbContext _dbContext;
+    UpemDbContext dbContext;
 
     public SchoolService(UpemDbContext dbContext)
     {
-        this._dbContext = dbContext;
+        this.dbContext = dbContext;
     }
 
     public IEnumerable<ShowSchoolDto> GetAllSchools()
     {
-        return this._dbContext.Schools.Select(s => s.ToShowDto());
+        return this.dbContext.Schools.Select(s => s.ToShowDto());
     }
 
     public async Task<ShowSchoolDto> GetSchoolById(Guid schoolId)
     {
-        var school = (await this._dbContext.Schools.FindAsync(schoolId)).ToShowDto();
-
+        var school = (await this.dbContext.Schools.FindAsync(schoolId)).ToShowDto();
         if (school == null)
         {
             throw new KeyNotFoundException($"School with the following id ${schoolId} not found");
         }
-
         return school;
     }
 
     public async Task<ShowSchoolDto> CreateSchool(CreateSchoolDto dto)
     {
         School school = dto.ToSchool();
-
-        await this._dbContext.Schools.AddAsync(school);
-
-        if (await this._dbContext.SaveChangesAsync(true) == 1)
-        {
-            return school.ToShowDto();
-        }
-
-        throw new InvalidOperationException("School creation failed");
+        await this.dbContext.Schools.AddAsync(school);
+        await this.dbContext.SaveChangesAsync(true);
+        return school.ToShowDto();
     }
 
     public async Task DeleteSchoolById(Guid schoolId)
     {
-        var school = await this._dbContext.Schools.FindAsync(schoolId);
+        var school = await this.dbContext.Schools.FindAsync(schoolId);
         if (school == null)
         {
             throw new KeyNotFoundException($"School with id {schoolId} not found");
         }
 
-        this._dbContext.Schools.Remove(school);
-        if (await this._dbContext.SaveChangesAsync() == 1)
-        {
-            return;
-        }
-
-        throw new InvalidOperationException("Error removing the school");
+        this.dbContext.Schools.Remove(school);
+        await this.dbContext.SaveChangesAsync();
     }
 }

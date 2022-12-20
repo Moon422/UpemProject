@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddTransient<ISchoolService, SchoolService>();
+builder.Services.AddTransient<IDepartmentService, DepartmentService>();
 
 builder.Services.AddDbContext<UpemDbContext>(
     options =>
