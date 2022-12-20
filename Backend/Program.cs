@@ -9,6 +9,8 @@ using UpemProject.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddTransient<ISchoolService, SchoolService>();
+
 builder.Services.AddDbContext<UpemDbContext>(
     options =>
     {

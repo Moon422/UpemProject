@@ -1,10 +1,13 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Dtos;
 
 public abstract class SchoolDto
 {
+    [Required]
     public string Name { get; set; }
+    [Required]
     public string Code { get; set; }
 }
 
