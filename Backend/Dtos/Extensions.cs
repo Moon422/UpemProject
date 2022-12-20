@@ -1,6 +1,8 @@
 using System;
 using UpemProject.Models;
 
+using UpemProgram = UpemProject.Models.Program;
+
 namespace Backend.Dtos;
 
 public static class DtoExtensions
@@ -46,6 +48,28 @@ public static class DtoExtensions
             Id = Guid.NewGuid(),
             Name = dto.Name,
             SchoolId = dto.SchoolId
+        };
+    }
+
+    public static ShowProgramDto ToShowDto(this UpemProgram program)
+    {
+        return new ShowProgramDto()
+        {
+            Id = program.Id,
+            Name = program.Name,
+            Code = program.Code,
+            DepartmentId = program.DepartmentId
+        };
+    }
+
+    public static UpemProgram ToModel(this CreateProgramDto dto)
+    {
+        return new UpemProgram()
+        {
+            Id = Guid.NewGuid(),
+            Name = dto.Name,
+            Code = dto.Code,
+            DepartmentId = dto.DepartmentId
         };
     }
 }

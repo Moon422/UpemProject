@@ -18,6 +18,9 @@ public class Program
     [StringLength(6)]
     public string Code { get; set; }
 
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
+
     [Required]
     public Guid DepartmentId { get; set; }
     public Department Department { get; set; }
