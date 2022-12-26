@@ -74,4 +74,32 @@ public static class DtoExtensions
             DepartmentId = dto.DepartmentId
         };
     }
+
+    public static ShowCourseDto ToShowDto(this Course course)
+    {
+        return new ShowCourseDto()
+        {
+            Id = course.Id,
+            Name = course.Name,
+            Code = course.Code,
+            CreditHours = course.CreditHours,
+            ProgramId = course.ProgramId,
+            CoOfferedWithId = course.CoOfferedWithId,
+            CreatedAt = course.CreatedAt,
+            LastUpdated = course.LastUpdated
+        };
+    }
+
+    public static Course ToCourse(this CreateCourseDto dto)
+    {
+        return new Course()
+        {
+            Id = Guid.NewGuid(),
+            Name = dto.Name,
+            Code = dto.Code,
+            CreditHours = dto.CreditHours,
+            ProgramId = dto.ProgramId,
+            CoOfferedWithId = dto.CoOfferedWithId
+        };
+    }
 }
