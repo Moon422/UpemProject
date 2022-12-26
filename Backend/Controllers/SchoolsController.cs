@@ -10,16 +10,16 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class SchoolController : ControllerBase
+public class SchoolsController : ControllerBase
 {
     ISchoolService schoolService;
 
-    public SchoolController(ISchoolService schoolService)
+    public SchoolsController(ISchoolService schoolService)
     {
         this.schoolService = schoolService;
     }
 
-    [HttpGet("all")]
+    [HttpGet]
     public Task<IEnumerable<ShowSchoolDto>> GetAllSchools()
     {
         return Task.FromResult(this.schoolService.GetAllSchools());
