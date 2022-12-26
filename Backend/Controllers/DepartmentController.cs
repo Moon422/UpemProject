@@ -9,16 +9,16 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class DepartmentController : ControllerBase
+public class DepartmentsController : ControllerBase
 {
     IDepartmentService departmentService;
 
-    public DepartmentController(IDepartmentService departmentService)
+    public DepartmentsController(IDepartmentService departmentService)
     {
         this.departmentService = departmentService;
     }
 
-    [HttpGet("all")]
+    [HttpGet]
     public IEnumerable<ShowDepartmentDto> GetAllDepartments()
     {
         return this.departmentService.GetAllDepartments();
@@ -37,7 +37,7 @@ public class DepartmentController : ControllerBase
         }
     }
 
-    [HttpPost("new")]
+    [HttpPost]
     public async Task<IActionResult> CreateDepartment(CreateDepartmentDto dto)
     {
         try
@@ -51,7 +51,7 @@ public class DepartmentController : ControllerBase
         }
     }
 
-    [HttpDelete("delete/{departmentId}")]
+    [HttpDelete("{departmentId}")]
     public async Task<IActionResult> DeleteDepartmentById(Guid departmentId)
     {
         try

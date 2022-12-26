@@ -9,11 +9,11 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ProgramController : ControllerBase
+public class ProgramsController : ControllerBase
 {
     ProgramService programService;
 
-    public ProgramController(ProgramService programService)
+    public ProgramsController(ProgramService programService)
     {
         this.programService = programService;
     }

@@ -39,7 +39,7 @@ public class SchoolsController : ControllerBase
         }
     }
 
-    [HttpPost("new")]
+    [HttpPost]
     public async Task<IActionResult> CreateSchool(CreateSchoolDto schoolDto)
     {
         try
@@ -53,7 +53,7 @@ public class SchoolsController : ControllerBase
         }
     }
 
-    [HttpDelete("delete/{schoolId}")]
+    [HttpDelete("{schoolId}")]
     public async Task<IActionResult> DeleteSchoolById(Guid schoolId)
     {
         try
