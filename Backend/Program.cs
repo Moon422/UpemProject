@@ -4,13 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using UpemProject.Services;
+using Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddTransient<ISchoolService, SchoolService>();
 builder.Services.AddTransient<IDepartmentService, DepartmentService>();
+builder.Services.AddTransient<IProgramService, ProgramService>();
+builder.Services.AddTransient<ICourseService, CourseService>();
 
 builder.Services.AddDbContext<UpemDbContext>(
     options =>
