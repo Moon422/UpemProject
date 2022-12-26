@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Backend.Dtos;
 
-namespace UpemProject.Services;
+namespace Backend.Services;
 
 public interface IProgramService
 {

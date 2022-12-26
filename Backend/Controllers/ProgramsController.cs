@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using UpemProject.Services;
+using Backend.Services;
 
 namespace Backend.Controllers;
 
@@ -11,9 +11,9 @@ namespace Backend.Controllers;
 [Route("[controller]")]
 public class ProgramsController : ControllerBase
 {
-    ProgramService programService;
+    IProgramService programService;
 
-    public ProgramsController(ProgramService programService)
+    public ProgramsController(IProgramService programService)
     {
         this.programService = programService;
     }

@@ -6,7 +6,7 @@ using Backend.Dtos;
 using Microsoft.EntityFrameworkCore;
 using UpemProject.Models;
 
-namespace UpemProject.Services;
+namespace Backend.Services;
 
 public interface ISchoolService
 {

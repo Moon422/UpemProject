@@ -4,7 +4,7 @@ using UpemProject.Models;
 using UpemProject.Models.Enums;
 using UpemProgram = UpemProject.Models.Program;
 
-namespace UpemProject.Services;
+namespace Backend.Services;
 
 public class UpemDbContext : DbContext
 {
