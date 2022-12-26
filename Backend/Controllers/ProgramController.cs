@@ -18,7 +18,7 @@ public class ProgramController : ControllerBase
         this.programService = programService;
     }
 
-    [HttpGet("all")]
+    [HttpGet]
     public IEnumerable<ShowProgramDto> GetAllPrograms()
     {
         return this.programService.GetAllPrograms();
@@ -37,7 +37,7 @@ public class ProgramController : ControllerBase
         }
     }
 
-    [HttpPost("new")]
+    [HttpPost]
     public async Task<IActionResult> CreateProgram(CreateProgramDto dto)
     {
         try
@@ -51,12 +51,13 @@ public class ProgramController : ControllerBase
         }
     }
 
+    [HttpDelete("{programId}")]
     public async Task<IActionResult> DeleteProgramById(Guid programId)
     {
         try
         {
-            var program = await this.programService.CreateProgram(dto);
-            return CreatedAtAction(nameof(GetProgramById), new { programId = program.Id }, program);
+            await this.programService.DeleteProgramById(programId);
+            return NoContent();
         }
         catch (KeyNotFoundException ex)
         {
