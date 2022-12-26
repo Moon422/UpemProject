@@ -18,6 +18,8 @@ public abstract class ProgramDto
 public class ShowProgramDto : ProgramDto
 {
     public Guid Id { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime LastUpdated { get; set; }
 }
 
 public class CreateProgramDto : ProgramDto

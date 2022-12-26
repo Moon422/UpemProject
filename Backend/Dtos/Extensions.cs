@@ -58,11 +58,13 @@ public static class DtoExtensions
             Id = program.Id,
             Name = program.Name,
             Code = program.Code,
-            DepartmentId = program.DepartmentId
+            DepartmentId = program.DepartmentId,
+            CreatedAt = program.CreatedAt,
+            LastUpdated = program.LastUpdated
         };
     }
 
-    public static UpemProgram ToModel(this CreateProgramDto dto)
+    public static UpemProgram ToProgram(this CreateProgramDto dto)
     {
         return new UpemProgram()
         {
