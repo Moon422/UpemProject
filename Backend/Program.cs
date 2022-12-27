@@ -13,6 +13,7 @@ builder.Services.AddTransient<ISchoolService, SchoolService>();
 builder.Services.AddTransient<IDepartmentService, DepartmentService>();
 builder.Services.AddTransient<IProgramService, ProgramService>();
 builder.Services.AddTransient<ICourseService, CourseService>();
+builder.Services.AddTransient<IClassroomService, ClassroomService>();
 
 builder.Services.AddDbContext<UpemDbContext>(
     options =>
