@@ -102,4 +102,26 @@ public static class DtoExtensions
             CoOfferedWithId = dto.CoOfferedWithId
         };
     }
+
+    public static ShowClassroomDto ToShowDto(this Classroom classroom)
+    {
+        return new ShowClassroomDto()
+        {
+            Id = classroom.Id,
+            RoomNumber = classroom.RoomNumber,
+            Capacity = classroom.Capacity,
+            CreatedAt = classroom.CreatedAt,
+            LastUpdated = classroom.LastUpdated
+        };
+    }
+
+    public static Classroom ToClassroom(this CreateClassroomDto dto)
+    {
+        return new Classroom()
+        {
+            Id = Guid.NewGuid(),
+            RoomNumber = dto.RoomNumber,
+            Capacity = dto.Capacity
+        };
+    }
 }
