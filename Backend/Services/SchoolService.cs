@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.Dtos;
-using Microsoft.EntityFrameworkCore;
-using UpemProject.Models;
+using Backend.Models;
 
 namespace Backend.Services;
 
-public interface ISchoolService
+public interface ISchoolService : ICrudService<School, Guid, ShowSchoolDto, CreateSchoolDto>
 {
-    IEnumerable<ShowSchoolDto> GetAllSchools();
-    Task<ShowSchoolDto> GetSchoolById(Guid schoolId);
-    Task<ShowSchoolDto> CreateSchool(CreateSchoolDto dto);
-    Task DeleteSchoolById(Guid schoolid);
 }
 
 public class SchoolService : ISchoolService
@@ -24,13 +19,12 @@ public class SchoolService : ISchoolService
     {
         this.dbContext = dbContext;
     }
-
-    public IEnumerable<ShowSchoolDto> GetAllSchools()
+    public IEnumerable<ShowSchoolDto> GetAll()
     {
         return this.dbContext.Schools.Select(s => s.ToShowDto());
     }
 
-    public async Task<ShowSchoolDto> GetSchoolById(Guid schoolId)
+    public async Task<ShowSchoolDto> GetOneById(Guid schoolId)
     {
         var school = (await this.dbContext.Schools.FindAsync(schoolId)).ToShowDto();
         if (school == null)
@@ -40,7 +34,7 @@ public class SchoolService : ISchoolService
         return school;
     }
 
-    public async Task<ShowSchoolDto> CreateSchool(CreateSchoolDto dto)
+    public async Task<ShowSchoolDto> CreateOne(CreateSchoolDto dto)
     {
         School school = dto.ToSchool();
         await this.dbContext.Schools.AddAsync(school);
@@ -48,7 +42,7 @@ public class SchoolService : ISchoolService
         return school.ToShowDto();
     }
 
-    public async Task DeleteSchoolById(Guid schoolId)
+    public async Task DeleteOneById(Guid schoolId)
     {
         var school = await this.dbContext.Schools.FindAsync(schoolId);
         if (school == null)

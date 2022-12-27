@@ -21,7 +21,7 @@ public class ProgramsController : ControllerBase
     [HttpGet]
     public IEnumerable<ShowProgramDto> GetAllPrograms()
     {
-        return this.programService.GetAllPrograms();
+        return this.programService.GetAll();
     }
 
     [HttpGet("{programId}")]
@@ -29,7 +29,7 @@ public class ProgramsController : ControllerBase
     {
         try
         {
-            return Ok(await this.programService.GetProgramById(programId));
+            return Ok(await this.programService.GetOneById(programId));
         }
         catch (KeyNotFoundException ex)
         {
@@ -42,7 +42,7 @@ public class ProgramsController : ControllerBase
     {
         try
         {
-            var program = await this.programService.CreateProgram(dto);
+            var program = await this.programService.CreateOne(dto);
             return CreatedAtAction(nameof(GetProgramById), new { programId = program.Id }, program);
         }
         catch (InvalidOperationException ex)
@@ -56,7 +56,7 @@ public class ProgramsController : ControllerBase
     {
         try
         {
-            await this.programService.DeleteProgramById(programId);
+            await this.programService.DeleteOneById(programId);
             return NoContent();
         }
         catch (KeyNotFoundException ex)

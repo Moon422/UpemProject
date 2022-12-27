@@ -22,7 +22,7 @@ public class SchoolsController : ControllerBase
     [HttpGet]
     public Task<IEnumerable<ShowSchoolDto>> GetAllSchools()
     {
-        return Task.FromResult(this.schoolService.GetAllSchools());
+        return Task.FromResult(this.schoolService.GetAll());
     }
 
     [HttpGet("{schoolId}")]
@@ -30,7 +30,7 @@ public class SchoolsController : ControllerBase
     {
         try
         {
-            var school = await this.schoolService.GetSchoolById(schoolId);
+            var school = await this.schoolService.GetOneById(schoolId);
             return Ok(school);
         }
         catch (KeyNotFoundException ex)
@@ -44,7 +44,7 @@ public class SchoolsController : ControllerBase
     {
         try
         {
-            var school = await this.schoolService.CreateSchool(schoolDto);
+            var school = await this.schoolService.CreateOne(schoolDto);
             return CreatedAtAction(nameof(GetSchoolById), new { schoolId = school.Id }, school);
         }
         catch (InvalidOperationException ex)
@@ -58,7 +58,7 @@ public class SchoolsController : ControllerBase
     {
         try
         {
-            await this.schoolService.DeleteSchoolById(schoolId);
+            await this.schoolService.DeleteOneById(schoolId);
             return NoContent();
         }
         catch (KeyNotFoundException ex)

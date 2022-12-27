@@ -1,8 +1,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-using UpemProject.Models;
-using UpemProject.Models.Enums;
-using UpemProgram = UpemProject.Models.Program;
+using Backend.Models;
+using Backend.Models.Enums;
+using UpemProgram = Backend.Models.Program;
 
 namespace Backend.Services;
 

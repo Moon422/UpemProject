@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.Dtos;
+using Backend.Models;
 
 namespace Backend.Services;
 
-public interface IDepartmentService
+public interface IDepartmentService : ICrudService<Department, Guid, ShowDepartmentDto, CreateDepartmentDto>
 {
-    IEnumerable<ShowDepartmentDto> GetAllDepartments();
-    Task<ShowDepartmentDto> GetDepartmentById(Guid departmentId);
-    Task<ShowDepartmentDto> CreateDepartment(CreateDepartmentDto dto);
-    Task DeleteDepartmentById(Guid departmentId);
 }
 
 public class DepartmentService : IDepartmentService
@@ -23,12 +20,12 @@ public class DepartmentService : IDepartmentService
         this.dbContext = dbContext;
     }
 
-    public IEnumerable<ShowDepartmentDto> GetAllDepartments()
+    public IEnumerable<ShowDepartmentDto> GetAll()
     {
         return this.dbContext.Departments.Select(d => d.ToShowDto());
     }
 
-    public async Task<ShowDepartmentDto> GetDepartmentById(Guid departmentId)
+    public async Task<ShowDepartmentDto> GetOneById(Guid departmentId)
     {
         var department = await this.dbContext.Departments.FindAsync(departmentId);
         if (department == null)
@@ -38,7 +35,7 @@ public class DepartmentService : IDepartmentService
         return department.ToShowDto();
     }
 
-    public async Task<ShowDepartmentDto> CreateDepartment(CreateDepartmentDto dto)
+    public async Task<ShowDepartmentDto> CreateOne(CreateDepartmentDto dto)
     {
         var department = dto.ToDepartment();
         await this.dbContext.Departments.AddAsync(department);
@@ -46,7 +43,7 @@ public class DepartmentService : IDepartmentService
         return department.ToShowDto();
     }
 
-    public async Task DeleteDepartmentById(Guid departmentId)
+    public async Task DeleteOneById(Guid departmentId)
     {
         var department = await this.dbContext.Departments.FindAsync(departmentId);
         if (department == null)

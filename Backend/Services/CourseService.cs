@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend.Dtos;
+using Backend.Models;
 
 namespace Backend.Services;
 
-public interface ICourseService
+public interface ICourseService : ICrudService<Course, Guid, ShowCourseDto, CreateCourseDto>
 {
-    Task<ShowCourseDto> CreateCourse(CreateCourseDto dto);
-    Task DeleteCourseById(Guid courseId);
-    IEnumerable<ShowCourseDto> GetAllCourses();
-    Task<ShowCourseDto> GetCourseById(Guid courseId);
 }
 
 public class CourseService : ICourseService
@@ -23,12 +20,12 @@ public class CourseService : ICourseService
         this.dbContext = dbContext;
     }
 
-    public IEnumerable<ShowCourseDto> GetAllCourses()
+    public IEnumerable<ShowCourseDto> GetAll()
     {
         return this.dbContext.Courses.Select(c => c.ToShowDto());
     }
 
-    public async Task<ShowCourseDto> GetCourseById(Guid courseId)
+    public async Task<ShowCourseDto> GetOneById(Guid courseId)
     {
         var course = await this.dbContext.Courses.FindAsync(courseId);
         if (course == null)
@@ -38,7 +35,7 @@ public class CourseService : ICourseService
         return course.ToShowDto();
     }
 
-    public async Task<ShowCourseDto> CreateCourse(CreateCourseDto dto)
+    public async Task<ShowCourseDto> CreateOne(CreateCourseDto dto)
     {
         var course = dto.ToCourse();
         await this.dbContext.Courses.AddAsync(course);
@@ -46,7 +43,7 @@ public class CourseService : ICourseService
         return course.ToShowDto();
     }
 
-    public async Task DeleteCourseById(Guid courseId)
+    public async Task DeleteOneById(Guid courseId)
     {
         var course = await this.dbContext.Courses.FindAsync(courseId);
         if (course == null)

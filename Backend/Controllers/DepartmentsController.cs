@@ -21,7 +21,7 @@ public class DepartmentsController : ControllerBase
     [HttpGet]
     public IEnumerable<ShowDepartmentDto> GetAllDepartments()
     {
-        return this.departmentService.GetAllDepartments();
+        return this.departmentService.GetAll();
     }
 
     [HttpGet("{departmentId}")]
@@ -29,7 +29,7 @@ public class DepartmentsController : ControllerBase
     {
         try
         {
-            return Ok(await this.departmentService.GetDepartmentById(departmentId));
+            return Ok(await this.departmentService.GetOneById(departmentId));
         }
         catch (KeyNotFoundException ex)
         {
@@ -42,7 +42,7 @@ public class DepartmentsController : ControllerBase
     {
         try
         {
-            var deptDto = await this.departmentService.CreateDepartment(dto);
+            var deptDto = await this.departmentService.CreateOne(dto);
             return CreatedAtAction(nameof(GetDepartmentById), new { departmentId = deptDto.Id }, deptDto);
         }
         catch
@@ -56,7 +56,7 @@ public class DepartmentsController : ControllerBase
     {
         try
         {
-            await this.departmentService.DeleteDepartmentById(departmentId);
+            await this.departmentService.DeleteOneById(departmentId);
             return NoContent();
         }
         catch (KeyNotFoundException ex)

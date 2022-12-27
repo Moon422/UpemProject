@@ -1,7 +1,7 @@
 using System;
-using UpemProject.Models;
+using Backend.Models;
 
-using UpemProgram = UpemProject.Models.Program;
+using UpemProgram = Backend.Models.Program;
 
 namespace Backend.Dtos;
 

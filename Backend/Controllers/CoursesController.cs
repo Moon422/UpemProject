@@ -21,7 +21,7 @@ public class CoursesController : ControllerBase
     [HttpGet]
     public IActionResult GetAllCourses()
     {
-        return Ok(this.courseService.GetAllCourses());
+        return Ok(this.courseService.GetAll());
     }
 
     [HttpGet("{courseId}")]
@@ -29,7 +29,7 @@ public class CoursesController : ControllerBase
     {
         try
         {
-            return Ok(await this.courseService.GetCourseById(courseId));
+            return Ok(await this.courseService.GetOneById(courseId));
         }
         catch (KeyNotFoundException ex)
         {
@@ -42,7 +42,7 @@ public class CoursesController : ControllerBase
     {
         try
         {
-            var courseDto = await this.courseService.CreateCourse(dto);
+            var courseDto = await this.courseService.CreateOne(dto);
             return CreatedAtAction(nameof(GetCourseById), new { courseId = courseDto.Id }, courseDto);
         }
         catch (Exception ex)
@@ -56,7 +56,7 @@ public class CoursesController : ControllerBase
     {
         try
         {
-            await this.courseService.DeleteCourseById(courseId);
+            await this.courseService.DeleteOneById(courseId);
             return NoContent();
         }
         catch (Exception ex)
