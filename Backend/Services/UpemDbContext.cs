@@ -13,6 +13,8 @@ public class UpemDbContext : DbContext
     public DbSet<UpemProgram> Programs { get; set; }
     public DbSet<Course> Courses { get; set; }
     public DbSet<Faculty> Faculties { get; set; }
+    public DbSet<Classroom> Classrooms { get; set; }
+    public DbSet<Section> Sections { get; set; }
 
     public UpemDbContext(DbContextOptions<UpemDbContext> options) : base(options)
     {
