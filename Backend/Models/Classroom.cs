@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UpemProject.Models;
+namespace Backend.Models;
 
 [Table("Classrooms")]
 public class Classroom

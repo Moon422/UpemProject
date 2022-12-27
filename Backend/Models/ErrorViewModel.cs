@@ -1,4 +1,4 @@
-namespace UpemProject.Models;
+namespace Backend.Models;
 
 public class ErrorViewModel
 {

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using UpemProject.Models.Enums;
+using Backend.Models.Enums;
 
-namespace UpemProject.Models;
+namespace Backend.Models;
 
 [Table("Users")]
 public abstract class User

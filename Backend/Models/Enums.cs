@@ -1,4 +1,4 @@
-namespace UpemProject.Models.Enums;
+namespace Backend.Models.Enums;
 
 public enum UserType
 {
