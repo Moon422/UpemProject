@@ -191,8 +191,8 @@ namespace Backend.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("time(6)");
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("FacultyId")
                         .HasColumnType("char(36)");
@@ -206,8 +206,8 @@ namespace Backend.Migrations
                     b.Property<int>("Semester")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time(6)");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
