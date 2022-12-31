@@ -9,11 +9,11 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ClassroomController : ControllerBase
+public class ClassroomsController : ControllerBase
 {
     IClassroomService classroomService;
 
-    public ClassroomController(IClassroomService classroomService)
+    public ClassroomsController(IClassroomService classroomService)
     {
         this.classroomService = classroomService;
     }
@@ -63,5 +63,17 @@ public class ClassroomController : ControllerBase
         {
             return BadRequest(ex.Message);
         }
+    }
+
+    [HttpPost("dummy")]
+    public async Task<IActionResult> CreateDummy()
+    {
+        CreateClassroomDto dto = new CreateClassroomDto()
+        {
+            RoomNumber = "C2002",
+            Capacity = 25
+        };
+
+        return await this.Create(dto);
     }
 }

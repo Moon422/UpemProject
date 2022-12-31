@@ -14,6 +14,8 @@ builder.Services.AddTransient<IDepartmentService, DepartmentService>();
 builder.Services.AddTransient<IProgramService, ProgramService>();
 builder.Services.AddTransient<ICourseService, CourseService>();
 builder.Services.AddTransient<IClassroomService, ClassroomService>();
+builder.Services.AddTransient<ISectionService, SectionService>();
+builder.Services.AddTransient<IFacultyService, FacultyService>();
 
 builder.Services.AddDbContext<UpemDbContext>(
     options =>

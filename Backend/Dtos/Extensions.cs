@@ -124,4 +124,68 @@ public static class DtoExtensions
             Capacity = dto.Capacity
         };
     }
+
+    public static ShowSectionDto ToShowDto(this Section section)
+    {
+        return new ShowSectionDto()
+        {
+            Id = section.Id,
+            Number = section.Number,
+            Blocked = section.Blocked,
+            StartTime = section.StartTime,
+            EndTime = section.EndTime,
+            ClassDay = section.ClassDay,
+            Semester = section.Semester,
+            Year = section.Year,
+            CreatedAt = section.CreatedAt,
+            LastUpdated = section.LastUpdated,
+            CourseId = section.CourseId,
+            FacultyId = section.FacultyId,
+            ClassroomId = section.ClassroomId
+        };
+    }
+
+    public static Section ToSection(this CreatedSectionDto dto)
+    {
+        return new Section()
+        {
+            Id = Guid.NewGuid(),
+            Number = dto.Number,
+            Blocked = dto.Blocked,
+            StartTime = dto.StartTime,
+            EndTime = dto.EndTime,
+            ClassDay = dto.ClassDay,
+            Semester = dto.Semester,
+            Year = dto.Year,
+            CourseId = dto.CourseId,
+            FacultyId = dto.FacultyId,
+            ClassroomId = dto.ClassroomId,
+        };
+    }
+
+    public static ShowFacultyDto ToShowDto(this Faculty faculty)
+    {
+        return new ShowFacultyDto()
+        {
+            Id = faculty.Id,
+            OrganizationId = faculty.OrganizationId,
+            FirstName = faculty.FirstName,
+            LastName = faculty.LastName,
+            UserType = faculty.UserType,
+            CreatedAt = faculty.CreatedAt,
+            LastUpdated = faculty.LastUpdated
+        };
+    }
+
+    public static Faculty ToFaculty(this CreateFacultyDto dto)
+    {
+        return new Faculty()
+        {
+            Id = Guid.NewGuid(),
+            OrganizationId = dto.OrganizationId,
+            FirstName = dto.FirstName,
+            LastName = dto.LastName,
+            UserType = dto.UserType,
+        };
+    }
 }
